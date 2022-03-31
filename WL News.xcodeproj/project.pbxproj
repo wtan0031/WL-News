@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C002E8D71FA5E95700CDBA8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002E8D61FA5E95700CDBA8A /* AppDelegate.swift */; };
-		C002E8D91FA5E95700CDBA8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002E8D81FA5E95700CDBA8A /* ViewController.swift */; };
 		C002E8DC1FA5E95700CDBA8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C002E8DA1FA5E95700CDBA8A /* Main.storyboard */; };
 		C002E8DE1FA5E95700CDBA8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C002E8DD1FA5E95700CDBA8A /* Assets.xcassets */; };
 		C002E8E11FA5E95700CDBA8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C002E8DF1FA5E95700CDBA8A /* LaunchScreen.storyboard */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		C002E8D31FA5E95700CDBA8A /* WL News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WL News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C002E8D61FA5E95700CDBA8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C002E8D81FA5E95700CDBA8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C002E8DB1FA5E95700CDBA8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C002E8DD1FA5E95700CDBA8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C002E8E01FA5E95700CDBA8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,17 +105,12 @@
 		C002E8D51FA5E95700CDBA8A /* WL News */ = {
 			isa = PBXGroup;
 			children = (
-				C002E8D61FA5E95700CDBA8A /* AppDelegate.swift */,
-				C002E8D81FA5E95700CDBA8A /* ViewController.swift */,
-				C002E8DA1FA5E95700CDBA8A /* Main.storyboard */,
+				C0090C3527F59E5A00349B72 /* Views */,
+				C0090C3327F59DA900349B72 /* Controllers */,
+				C0090C3427F59E2300349B72 /* Resources */,
+				C002E8E21FA5E95700CDBA8A /* Info.plist */,
 				C002E8DD1FA5E95700CDBA8A /* Assets.xcassets */,
 				C002E8DF1FA5E95700CDBA8A /* LaunchScreen.storyboard */,
-				C002E8E21FA5E95700CDBA8A /* Info.plist */,
-				C002E9041FA5EA2F00CDBA8A /* HomeTableViewCell.swift */,
-				C002E9061FA5EA8400CDBA8A /* HomeViewController.swift */,
-				C002E9081FA5ECE200CDBA8A /* HomeDetailsViewController.swift */,
-				C002E90A1FA5ED2A00CDBA8A /* Home.swift */,
-				C002E90C1FA5ED8500CDBA8A /* Helper.swift */,
 			);
 			path = "WL News";
 			sourceTree = "<group>";
@@ -138,6 +131,34 @@
 				C002E8F81FA5E95700CDBA8A /* Info.plist */,
 			);
 			path = "WL NewsUITests";
+			sourceTree = "<group>";
+		};
+		C0090C3327F59DA900349B72 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C002E9061FA5EA8400CDBA8A /* HomeViewController.swift */,
+				C002E9081FA5ECE200CDBA8A /* HomeDetailsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C0090C3427F59E2300349B72 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C002E8D61FA5E95700CDBA8A /* AppDelegate.swift */,
+				C002E90A1FA5ED2A00CDBA8A /* Home.swift */,
+				C002E90C1FA5ED8500CDBA8A /* Helper.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C0090C3527F59E5A00349B72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C002E8DA1FA5E95700CDBA8A /* Main.storyboard */,
+				C002E9041FA5EA2F00CDBA8A /* HomeTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +297,6 @@
 			files = (
 				C002E9051FA5EA2F00CDBA8A /* HomeTableViewCell.swift in Sources */,
 				C002E90D1FA5ED8500CDBA8A /* Helper.swift in Sources */,
-				C002E8D91FA5E95700CDBA8A /* ViewController.swift in Sources */,
 				C002E8D71FA5E95700CDBA8A /* AppDelegate.swift in Sources */,
 				C002E9091FA5ECE200CDBA8A /* HomeDetailsViewController.swift in Sources */,
 				C002E90B1FA5ED2A00CDBA8A /* Home.swift in Sources */,

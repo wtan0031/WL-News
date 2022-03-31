@@ -17,7 +17,7 @@ struct Constants {
     
     static let urlString4 = "https://newsapi.org/v2/top-headlines?country=us&apiKey=11fd246c28ab411f98aa89868f674180"
     
-    static let urlString5 = "https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
+    static let urlString5 = "https://newsapi.org/v1/articles?source=independent&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
 }
 
 class Home  {
