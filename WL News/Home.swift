@@ -8,6 +8,18 @@
 
 import Foundation
 
+struct Constants {
+    static let urlString1 = "https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
+    
+    static let urlString2 = "https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
+    
+    static let urlString3 = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
+    
+    static let urlString4 = "https://newsapi.org/v2/top-headlines?country=us&apiKey=11fd246c28ab411f98aa89868f674180"
+    
+    static let urlString5 = "https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
+}
+
 class Home  {
     
     var url : String?
