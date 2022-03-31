@@ -5,7 +5,7 @@ Get the latest headlines from the prestigous source.
 
 ## Framework/ Technology
 - UIKit ( UIWebView, UITableView, UIActivityIndicator, UITextField, UISearchBar )
-- Storyboard
+- UIStoryboard
 
 ## Features
 - able to search the news from the list 
