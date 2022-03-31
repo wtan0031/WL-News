@@ -7,8 +7,6 @@
 //
 
 import UIKit
-//import FirebaseAuth
-//import FirebaseDatabase
 
 class HomeViewController: UIViewController , UISearchBarDelegate{
     var news : [Home] = []
@@ -28,26 +26,15 @@ class HomeViewController: UIViewController , UISearchBarDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //dismiss keybaord when tap on vc
-        //self.hideKeyboardWhenTappedAround()
-        
-        //tableView.removeGestureRecognizer(tapGesture)
-        
         tableView.dataSource = self
         tableView.delegate = self
         searchTextFieldBar.delegate = self
         
-        let urlString1 = "https://newsapi.org/v1/articles?source=engadget&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
-        let urlString2 = "https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
-        let urlString3 = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
-        
-        fetchData(urlString: urlString1)
-        
-        fetchData(urlString: urlString2)
-        
-        fetchData(urlString: urlString3)
-        
-        // Do any additional setup after loading the view.
+        fetchData(urlString: Constants.urlString1)
+        fetchData(urlString: Constants.urlString2)
+        fetchData(urlString: Constants.urlString3)
+        fetchData(urlString: Constants.urlString4)
+        fetchData(urlString: Constants.urlString5)
     }
     
     
@@ -70,9 +57,7 @@ class HomeViewController: UIViewController , UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        
-        //filtered = data.filter({ (text) -> Bool in
-        if searchText.characters.count == 0 {
+        if searchText.count == 0 {
             
             filtered = news
             
@@ -92,14 +77,11 @@ class HomeViewController: UIViewController , UISearchBarDelegate{
     }
     
     
-    
-    
     func fetchData(urlString : String) {
         //send API request
         //1.get the url
-        //let urlString = "https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=11fd246c28ab411f98aa89868f674180"
         guard let url = URL(string: urlString)
-            else { return }
+        else { return }
         
         //2. Get a URLSession
         let session = URLSession.shared
@@ -111,47 +93,30 @@ class HomeViewController: UIViewController , UISearchBarDelegate{
                 return
             }
             
-            
             guard let data = data
-                else{
-                    print("Invalid Data")
-                    return
-            }
+            else{
+                print("Invalid Data")
+                return }
             
-            //print(data)
             //Convert to Json
-            
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []),
-                let validJson = json as? [String : Any]
-                else {
-                    return
-            }
+                  let validJson = json as? [String : Any] else { return }
             
             guard let homeArray = validJson["articles"] as? [[String:Any]]
-                else { return }
-            
+            else { return }
             
             for homeData in homeArray {
-                
                 let newHome = Home(homeData: homeData)
                 self.news.append(newHome)
-                
-                
             }
-            //self.filtered = self.news
-            
-            // print(self.news.count)
-            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
             
         }
         //4. Start the task
         task.resume()
     }
-    
     
 }
 
@@ -166,11 +131,13 @@ extension HomeViewController : UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //1.get the cell
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
         
-        
         var aNews = news[indexPath.row]
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let someDate = formatter.string(from: Date())
         
         if searchActive {
             aNews = filtered[indexPath.row]
@@ -178,13 +145,16 @@ extension HomeViewController : UITableViewDataSource {
             aNews = news[indexPath.row]
         }
         
-        
         cell.newsArticleTitleLabel.text = aNews.title
         cell.newsSummaryTextView.text = aNews.description
-        cell.newsPublishedTime.text = aNews.publishedTime
+        
+        if aNews.publishedTime == nil {
+            cell.newsPublishedTime.text = "\(someDate)T17:01:00Z"
+        } else {
+            cell.newsPublishedTime.text = aNews.publishedTime
+        }
         cell.newsImageView.loadImage(from: aNews.urlImage ?? "")
         
-        //2.setup fot the time format
         let RFC3339DateFormatter = DateFormatter()
         RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
         RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
@@ -193,37 +163,7 @@ extension HomeViewController : UITableViewDataSource {
         guard let date1 = RFC3339DateFormatter.date(from: string) else { return UITableViewCell() }
         
         let newDate = DateHelper.createDateTimeString(date1.timeIntervalSince1970)
-        cell.newsPublishedTime.text = newDate   //String(describing: date1)
-        
-        
-        //cell.tag = indexPath.row
-        
-        
-        //        if searchActive {
-        //            let filter = filtered[indexPath.row]
-        //            cell.newsArticleTitleLabel.text = filter.title
-        //            //cell.fullnameLabel.text = "\(filter.fullname) Following"
-        //
-        //            let imageURL = filter.urlImage
-        //            cell.newsImageView.loadImage(from: imageURL!)
-        //
-        //        } else {
-        //            let aNews = news[indexPath.row]
-        //            cell.newsArticleTitleLabel.text = aNews.title
-        //            //cell.fullnameLa.text = "\(aNews.fullname) Following"
-        //
-        //            let imageURL = aNews.urlImage
-        //            cell.newsImageView.loadImage(from: imageURL!)
-        //        }
-        
-        //        DispatchQueue.main.async {
-        //            if cell.tag == indexPath.row {
-        //                guard let urlImage = aNews.urlImage else
-        //                { return }
-        //                cell.newsImageView.loadImage(from: urlImage)
-        //            }
-        //        }
-        
+        cell.newsPublishedTime.text = newDate
         
         return cell
     }
@@ -235,9 +175,8 @@ extension HomeViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //move to the next view
         guard let targetVC = storyboard?.instantiateViewController(withIdentifier: "HomeDetailsViewController" )
-            as? HomeDetailsViewController
-            else { return }
-        //setup
+                as? HomeDetailsViewController
+        else { return }
         targetVC.selectedNews = news[indexPath.row]
         
         navigationController?.pushViewController(targetVC, animated: true)
