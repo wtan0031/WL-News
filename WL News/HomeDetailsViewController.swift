@@ -23,10 +23,9 @@ class HomeDetailsViewController: UIViewController, UIWebViewDelegate, UITextFiel
         variableWebView.delegate = self
         loadurl(with: (selectedNews?.url)!)
     }
+    
     func loadurl(with string: String){
-        guard let url = URL(string: string) else {
-            return
-        }
+        guard let url = URL(string: string) else {return}
         
         let request = URLRequest(url: url)
         variableWebView.loadRequest(request)
@@ -34,12 +33,10 @@ class HomeDetailsViewController: UIViewController, UIWebViewDelegate, UITextFiel
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         loadingView.startAnimating()
-        print("start loading")
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         loadingView.stopAnimating()
-        print("finish loading")
     }
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
