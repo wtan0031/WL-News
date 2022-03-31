@@ -6,7 +6,6 @@
 //  Copyright © 2017 Tan Wei Liang. All rights reserved.
 //
 
-
 import Foundation
 
 class Home  {
@@ -17,15 +16,9 @@ class Home  {
     var urlImage : String?
     var publishedTime : String?
     
-    
-    
-    
-    
-    
     init (homeData : [String : Any]){
         
-        
-        if let anUrl = homeData["url"] as? String{
+        if let anUrl = homeData["url"] as? String {
             url = anUrl
         }
         
