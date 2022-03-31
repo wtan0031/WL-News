@@ -10,7 +10,6 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
     
-    //****** All the object library *******
     @IBOutlet weak var newsImageView: UIImageView!
     
     @IBOutlet weak var newsArticleTitleLabel: UILabel!
@@ -18,16 +17,9 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var newsSummaryTextView: UITextView!
     
     @IBOutlet weak var newsPublishedTime: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-    
-    //    override func setSelected(_ selected: Bool, animated: Bool) {
-    //        super.setSelected(selected, animated: animated)
-    //
-    //        // Configure the view for the selected state
-    //    }
-    
 }
 
